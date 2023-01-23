@@ -34,7 +34,7 @@ kaneki_student_id = students.insert_one(kaneki).inserted_id
 
 # insert statements with output 
 print("\n  -- INSERT STATEMENTS --")
-print("  Inserted student record into the students collection with document_id " + str(kaneki_student_id))
+print("  Inserted student record into the students collection with document_id " + "str(kaneki_student_id)")
 
 # call the find_one() method by student_id 1010
 kaneki = students.find_one({"student_id": "1010"})
