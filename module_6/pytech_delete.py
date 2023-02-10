@@ -1,7 +1,15 @@
+""" 
+    Title: pytech_delete.py
+    Author: Professor Krasso
+    Date: 13 July 2020
+    Description: Test program for deleting documents from the pytech collection
+"""
+
+""" import statements """
 from pymongo import MongoClient
 
 # MongoDB connection string 
-url = "mongodb+srv://admin:admin@cluster0.j6x3ar9.mongodb.net/?retryWrites=true&w=majority"
+url = "mongodb+srv://admin:admin@cluster0.rsnru.mongodb.net/pytech?retryWrites=true&w=majority"
 
 # connect to the MongoDB cluster 
 client = MongoClient(url)
@@ -23,25 +31,25 @@ for doc in student_list:
     print("  Student ID: " + doc["student_id"] + "\n  First Name: " + doc["first_name"] + "\n  Last Name: " + doc["last_name"] + "\n")
 
 # test document 
-kaneki = {
+test_doc = {
     "student_id": "1010",
-    "first_name": "Ken",
-    "last_name": "Kaneki"
+    "first_name": "John",
+    "last_name": "Doe"
 }
 
 # insert the test document into MongoDB atlas 
-kaneki_student_id = students.insert_one(kaneki).inserted_id
+test_doc_id = students.insert_one(test_doc).inserted_id
 
 # insert statements with output 
 print("\n  -- INSERT STATEMENTS --")
-print("  Inserted student record into the students collection with document_id " + "str(kaneki_student_id)")
+print("  Inserted student record into the students collection with document_id " + str(test_doc_id))
 
 # call the find_one() method by student_id 1010
-kaneki = students.find_one({"student_id": "1010"})
+student_test_doc = students.find_one({"student_id": "1010"})
 
 # display the results 
 print("\n  -- DISPLAYING STUDENT TEST DOC -- ")
-print("  Student ID: " + kaneki["student_id"] + "\n  First Name: " + kaneki["first_name"] + "\n  Last Name: " + kaneki["last_name"] + "\n")
+print("  Student ID: " + student_test_doc["student_id"] + "\n  First Name: " + student_test_doc["first_name"] + "\n  Last Name: " + student_test_doc["last_name"] + "\n")
 
 # call the delete_one method to remove the student_test_doc
 deleted_student_test_doc = students.delete_one({"student_id": "1010"})

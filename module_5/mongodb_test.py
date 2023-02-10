@@ -1,7 +1,16 @@
+""" 
+    Title: mongodb_test.py
+    Author: Professor Krasso
+    Date: 10 July 2020
+    Description: Test program for connecting to a 
+                 MongoDB Atlas cluster
+"""
+
+""" import statements """
 from pymongo import MongoClient
 
 # MongoDB connection string 
-url = "mongodb+srv://admin:admin@cluster0.j6x3ar9.mongodb.net/?retryWrites=true&w=majority"
+url = "mongodb+srv://admin:admin@cluster0.rsnru.mongodb.net/pytech?retryWrites=true&w=majority"
 
 # connect to the MongoDB cluster 
 client = MongoClient(url)
@@ -10,8 +19,8 @@ client = MongoClient(url)
 db = client.pytech
 
 # show the connected collections 
-print("\n -- Pytech Collection List --")
+print("\n -- Pytech COllection List --")
+print(db.list_collection_names())
 
-print(db.list_collection_names)
-
-print("Goodbye")
+# show an exit message
+input("\n\n  End of program, press any key to exit... ")

@@ -1,8 +1,16 @@
+""" 
+    Title: pytech_insert.py
+    Author: Professor Krasso
+    Date: 10 July 2020
+    Description: Test program for inserting new documents 
+                 into the students collection 
+"""
+
 """ import statements """
 from pymongo import MongoClient
 
 # MongoDB connection string 
-url = "mongodb+srv://admin:admin@cluster0.j6x3ar9.mongodb.net/?retryWrites=true&w=majority"
+url = "mongodb+srv://admin:admin@cluster0.rsnru.mongodb.net/pytech?retryWrites=true&w=majority"
 
 # connect to the MongoDB cluster 
 client = MongoClient(url)
@@ -10,70 +18,93 @@ client = MongoClient(url)
 # connect pytech database
 db = client.pytech
 
-harry = {
-   "student_id": "1007",
-   "first_name": "Harry",
-   "last_name": "Potter",
-   "enrollments" : [
-		{
-			"gpa": 3.6,
-			"start_date" : "01/02/2022",
-			"end_date"     : "05/16/2022", 
-			"student_id"   : "1007",
-			"courses": [
-				 {
-					"course_id": "DADA301",
-					"description": "Third Year Defensive Magic",
-					"instructor": "Snape, Severus",
-					"grade": "B-" 
-				 }
-			]
-		}
-	]
+""" three student documents"""
+# Thorin Oakenshield's data document 
+thorin = {
+    "student_id": "1007",
+    "first_name": "Thorin",
+    "last_name": "Oakenshield",
+    "enrollments": [
+        {
+            "term": "Session 2",
+            "gpa": "4.0",
+            "start_date": "July 10, 2020",
+            "end_date": "September 14, 2020",
+            "courses": [
+                {
+                    "course_id": "CSD310",
+                    "description": "Database Development and Use",
+                    "instructor": "Professor Krasso",
+                    "grade": "A+"
+                },
+                {
+                    "course_id": "CSD320",
+                    "description": "Programming with Java",
+                    "instructor": "Professor Krasso",
+                    "grade": "A+"
+                }
+            ]
+        }
+    ]
+
 }
 
-zark = {
-   "student_id": "1008",
-   "first_name": "Zark",
-   "last_name": "Muckerburg",
-   "enrollments" : [
-		{
-			"gpa": "4.0",
-			"start_date" : "01/02/2022",
-			"end_date"     : "05/16/2022", 
-			"student_id"   : "1008",
-			"courses": [
-				 {
-					"course_id": "BIO203",
-					"description": "How To Look Lizard",
-					"instructor": "The Gieco Gecko",
-					"grade": "A+" 
-				 }
-			]
-		}
-	]
+# Bilbo Baggins data document 
+bilbo = {
+    "student_id": "1008",
+    "first_name": "Bilbo",
+    "last_name": "Baggins",
+    "enrollments": [
+        {
+            "term": "Session 2",
+            "gpa": "3.52",
+            "start_date": "July 10, 2020",
+            "end_date": "September 14, 2020",
+            "courses": [
+                {
+                    "course_id": "CSD310",
+                    "description": "Database Development and Use",
+                    "instructor": "Professor Krasso",
+                    "grade": "B+"
+                },
+                {
+                    "course_id": "CSD320",
+                    "description": "Programming with Java",
+                    "instructor": "Professor Krasso",
+                    "grade": "A-"
+                }
+            ]
+        }
+    ]
 }
 
-geralt = {
-   "student_id": "1009",
-   "first_name": "Geralt",
-   "last_name": "Rivia",
-   "enrollments" : [
-		{
-			"gpa": "3.8",
-			"start_date" : "01/02/2022",
-			"end_date"     : "05/16/2022", 
-			"student_id"   : "1009",
-			"courses": [
-				 {
-					"course_id": "CTWH101",
-					"description": "Catching the Wild Hunt",
-					"instructor": "Vesemir",
-					"grade": "C+" 
-				 }
-			]
-		}
-	]
+# Frodo Baggins data document
+frodo = {
+    "student_id": "1009",
+    "first_name": "Frodo",
+    "last_name": "Baggins",
+    "enrollments": [
+        {
+            "term": "Session 2",
+            "gpa": "1.5",
+            "start_date": "July 10, 2020",
+            "end_date": "September 14, 2020",
+            "courses": [
+                {
+                    "course_id": "CSD310",
+                    "description": "Database Development and Use",
+                    "instructor": "Professor Krasso",
+                    "grade": "C"
+                },
+                {
+                    "course_id": "CSD 320",
+                    "description": "Programming with Java",
+                    "instructor": "Professor Krasso",
+                    "grade": "B"
+                }
+            ]
+        }
+    ]
 }
 
 # get the students collection 
@@ -81,13 +112,13 @@ students = db.students
 
 # insert statements with output 
 print("\n  -- INSERT STATEMENTS --")
-harry_student_id = students.insert_one(harry).inserted_id
-print("  Inserted student record Harry Potter into the students collection with document_id " + str(harry_student_id))
+thorin_student_id = students.insert_one(thorin).inserted_id
+print("  Inserted student record Thorin Oakenshield into the students collection with document_id " + str(thorin_student_id))
 
-zark_student_id = students.insert_one(zark).inserted_id
-print("  Inserted student record Zark Muckerberg into the students collection with document_id " + str(zark_student_id))
+bilbo_student_id = students.insert_one(bilbo).inserted_id
+print("  Inserted student record Bilbo Baggins into the students collection with document_id " + str(bilbo_student_id))
 
-geralt_student_id = students.insert_one(geralt).inserted_id
-print("  Inserted student record Geralt of Rivia into the students collection with document_id " + str(geralt_student_id))
+frodo_student_id = students.insert_one(frodo).inserted_id
+print("  Inserted student record Frodo Baggins into the students collection with document_id " + str(frodo_student_id))
 
 input("\n\n  End of program, press any key to exit... ")
