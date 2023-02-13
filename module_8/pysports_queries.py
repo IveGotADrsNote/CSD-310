@@ -59,4 +59,4 @@ except mysql.connector.Error as err:
 finally:
     """ close the connection to MySQL """
     
-
+    db.close()
