@@ -192,5 +192,4 @@ except mysql.connector.Error as err:
         print(err)
 
 finally:
-
     db.close()
