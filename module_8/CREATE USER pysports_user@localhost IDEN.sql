@@ -1,4 +1,4 @@
-CREATE USER pysports_user@localhost IDENTIFIED WITH mysql_native_password BY E@versus12;
+CREATE USER 'pysports_user'@'localhost' IDENTIFIED WITH mysql_native_password BY 'E@versus12';
 
 GRANT ALL PRIVILEGES ON pysports.* TO 'pysports_user'@'localhost';
 
