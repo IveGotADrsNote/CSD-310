@@ -11,6 +11,7 @@ config = {
     "raise_on_warnings": True
 }
 
+db = mysql.connector.connect(**config) 
 def show_menu():
     print("\n  -- Main Menu --")
 
@@ -116,8 +117,6 @@ def add_book_to_wishlist(_cursor, _user_id, _book_id):
     _cursor.execute("INSERT INTO wishlist(user_id, book_id) VALUES({}, {})".format(_user_id, _book_id))
 
 try:
-     
-    db = mysql.connector.connect(**config) # connect to the WhatABook database 
 
     cursor = db.cursor()
 

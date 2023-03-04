@@ -1,3 +1,9 @@
+DROP USER IF EXISTS 'whatabook_user'@'localhost';
+
+CREATE USER 'whatabook_user'@'localhost' IDENTIFIED WITH mysql_native_password BY 'MySQL8IsGreat!';
+
+GRANT ALL PRIVILEGES ON whatabook.* TO'whatabook_user'@'localhost';
+
 ALTER TABLE wishlist DROP FOREIGN KEY fk_book;
 ALTER TABLE wishlist DROP FOREIGN KEY fk_user;
 
@@ -59,23 +65,23 @@ INSERT INTO book(book_name, author, details)
 INSERT INTO book(book_name, author, details)
     VALUES('Fight Club', 'Chuck Palahniuk', "follows the experiences of an unnamed protagonist struggling with insomnia. ");
 
-INSERT INTO book(book_name, author)
-    VALUES('The Casebook of Sherlock Holmes', 'Arthur Conan Doyle');
+INSERT INTO book(book_name, author, details)
+    VALUES('The Casebook of Sherlock Holmes', 'Arthur Conan Doyle', 'A Collection Of Sherlock Holmes Short Stories');
 
-INSERT INTO book(book_name, author)
-    VALUES('A Game Of Thrones: A Song of Ice and Fire (Book 1)', 'George R.R. Martin');
+INSERT INTO book(book_name, author, details)
+    VALUES('A Game Of Thrones: A Song of Ice and Fire (Book 1)', 'George R.R. Martin', 'The First Book in the Song of Fire & Ice');
 
-INSERT INTO book(book_name, author)
-    VALUES("A Game Of Thrones: A Clash Of Kings (Book 2)", 'George R.R. Martin');
+INSERT INTO book(book_name, author, details)
+    VALUES("A Game Of Thrones: A Clash Of Kings (Book 2)", 'George R.R. Martin', 'Second Book');
 
-INSERT INTO book(book_name, author)
-    VALUES('A Game Of Thrones: A Storm of Swords (Book 3)', 'George R.R. Martin');
+INSERT INTO book(book_name, author, details)
+    VALUES('A Game Of Thrones: A Storm of Swords (Book 3)', 'George R.R. Martin', 'Third Book');
 
-INSERT INTO book(book_name, author)
-    VALUES('A Game Of Thrones: A Feast For Crows (Book 4)', 'George R.R. Martin');
+INSERT INTO book(book_name, author, details)
+    VALUES('A Game Of Thrones: A Feast For Crows (Book 4)', 'George R.R. Martin', 'Fourth Book');
 
-INSERT INTO book(book_name, author)
-    VALUES('A Game Of Thrones: A Dance With Dragons (Book 5)', 'George R.R. Martin');
+INSERT INTO book(book_name, author, details)
+    VALUES('A Game Of Thrones: A Dance With Dragons (Book 5)', 'George R.R. Martin', 'Fifth Book');
 
 /*
     insert user

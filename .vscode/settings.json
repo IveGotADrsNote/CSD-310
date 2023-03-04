@@ -1,3 +1,6 @@
 {
-    "python.analysis.importFormat": "absolute"
+    "python.analysis.importFormat": "absolute",
+    "cSpell.words": [
+        "whatabook"
+    ]
 }
